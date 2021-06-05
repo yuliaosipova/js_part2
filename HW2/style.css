@@ -5,16 +5,19 @@ header {
     justify-content: flex-end;
     margin-bottom: 16px;
 }
-.cartButton {
+.cartButton,
+.btnGoodsItem {
     border: 1px solid #000;
     border-radius: 3px;
     text-align: center;
     padding: 4px;
     background-color: rgb(168, 129, 129);
     font-family: sans-serif;
+    margin: 16px;
 }
 
-.cartButton:hover {
+.cartButton:hover,
+.btnGoodsItem:hover {
     background-color: rgba(56, 45, 45, 0.63);
 }
 
@@ -25,7 +28,13 @@ header {
 }
 
 .goodsImg {
-    width: 200px;
+    max-height: 100%;
+    max-width: 100%;
+}
+.goodsImgContainer {
+    height: 30vh;
+    display: flex;
+    align-items: center;
 }
 
 .goodsItem {
@@ -35,6 +44,7 @@ header {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    width: 20vw;
 }
 
 h3,

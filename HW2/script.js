@@ -6,7 +6,7 @@ class GoodsItem {
     this.img = img;
   }
   render() {
-    return `<div class="goodsItem"><h3>${this.title}</h3><img src="${this.img}" class="goodsImg"><p>${this.price}</p><button class="btnGoodsItem" onclick="onBtnGoodsItem('${this.title}', '${this.price}')">В корзину</button></div>`;
+    return `<div class="goodsItem"><h3>${this.title}</h3><div class="goodsImgContainer"><img src="${this.img}" class="goodsImg"></div><p>${this.price}</p><button class="btnGoodsItem" onclick="onBtnGoodsItem('${this.title}', '${this.price}')">В корзину</button></div>`;
   }
 }
 
@@ -49,11 +49,13 @@ class Basket {
   }
   render() {
     let innerHtml = "";
-    let counter = 0;
+    // let counter = 0;
     this.goodsBasket.forEach(good => {
       innerHtml += good.render();
-      counter += good.getPrice();
+      // counter += good.getPrice();
     });
+    let counter = this.goodsBasket.reduce((accum, currentValue) => accum + currentValue.getPrice(), 0);
+
     document.getElementsByClassName("basketList")[0].innerHTML = innerHtml + `<div class="sumBasket"><p>${counter}</p></div>`;
   }
 }
