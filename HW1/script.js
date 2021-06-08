@@ -1,3 +1,25 @@
+
+// class Test {
+//   #count = 0
+//   click() {
+//     this.#count += 1;
+//   }
+//   getCount() {
+//     return this.#count;
+//   }
+// }
+
+// class Test2 extends Test {
+
+// }
+
+// var test = new Test2();
+// test.click();
+// test.click();
+// console.log(test.getCount());
+
+
+
 const goods = [
     { title: 'Shirt', price: 150, img: "img/shirt.jpg" },
     { title: 'Socks', price: 50, img: "img/socks.jpg" },
