@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW3</title>
+    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <div class="searchContainer">
+                <input type="text" class="goodsSearch" v-model="searchLine"/>
+                <button class="searchButton" type="button" @click="filterGoods">Искать</button>
+            </div>
+            <buttton class="cartButton" type="button" @click="btnBasket">Корзина</buttton>
+        </header>
+        <main>
+    
+            <div class="modal" v-if="isVisibleCart">
+                <div class="modalContainer">
+                    <button class="closeBasket" @click="btnBasket">&times;</button>
+                    <h1 class="titleBasket">Корзина</h1>
+                    <div class="basketList" v-for="good in basketGoods">
+                        <h3>{{ good.product_name }}</h3>
+                        <p> {{ good.price }} </p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="goodsList">
+                <div v-show="filteredGoods.length === 0">Нет данных</div>
+                <div class="goodsItem" v-for="good in filteredGoods" v-show="filteredGoods.length !== 0">
+                    <h3>{{ good.product_name }}</h3>
+                    <p>{{ good.price }}</p>
+                    <button class="buy" @click="buyGood(good.product_name, good.price)">Купить</button>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+</body>
+</html>
