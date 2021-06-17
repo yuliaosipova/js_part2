@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW6</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <search @filter="filterGoods" :value="searchLine" v-on:input="searchLine = $event"></search>
+            <buttton class="cartButton" type="button" @click="btnBasket">Корзина</buttton>
+        </header>
+        <main>
+            <basket @closeBasket="btnBasket" @delete="deleteBasketItem(good)" :basketGoods="basketGoods" :buyGood="buyGood" v-show="isVisibleCart"></basket>   
+            <goods-list :goods="filteredGoods" @buyItem="buyGood"></goods-list>
+
+            <!-- <div class="modal" v-if="isVisibleCart">
+                <div class="modalContainer">
+                    <button class="closeBasket" @click="btnBasket">&times;</button>
+                    <h1 class="titleBasket">Корзина</h1>
+                    <div class="basketList" v-for="good in basketGoods" v-if="basketGoods.length !==0">
+                        <h3>{{ good.product_name }}</h3>
+                        <p> {{ good.price }} </p>
+                        <button @click="deleteBasketItem(good)">Удалить</button>
+                    </div>
+                    <div class="emptyBasket" v-else>Корзина пуста</div>
+                </div>
+            </div> -->
+    
+            <!-- <div class="goodsList">
+                <div class="goodsItem" v-for="good in filteredGoods" v-if="filteredGoods.length !== 0">
+                    <h3>{{ good.product_name }}</h3>
+                    <p>{{ good.price }}</p>
+                    <button class="buy" @click="buyGood(good.product_name, good.price)">Купить</button>
+                </div>
+                <div class="emptyGoods" v-else>Нет данных</div>
+            </div> -->
+        </main>
+    </div>
+    
+</body>
+</html>
