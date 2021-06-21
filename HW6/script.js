@@ -38,6 +38,31 @@ const app = new Vue({
       });
     },
 
+    makePOSTRequest(url, data) {
+     return new Promise((response, reject) => {
+      let xhr;
+  
+      if (window.XMLHttpRequest) {
+        xhr = new XMLHttpRequest();
+      } else if (window.ActiveXObject) { 
+        xhr = new ActiveXObject("Microsoft.XMLHTTP");
+      }
+  
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          response(xhr.responseText);
+        } else {
+          reject("error");
+        }
+      }
+  
+      xhr.open('POST', url, true);
+      xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+  
+      xhr.send(data);
+     })
+    },  
+
     filterGoods() {
       console.log(this.searchLine);
       const regexp = new RegExp(this.searchLine, 'i');
@@ -61,7 +86,7 @@ const app = new Vue({
   },
 
   mounted() {
-    this.makeGETRequest(`${API_URL}/catalogData.json`).then ((goods) => {
+    this.makeGETRequest(`/catalogData`).then ((goods) => {
       this.goods = JSON.parse(goods);
       this.filteredGoods = this.goods;
     }).catch((string) => {

@@ -18,28 +18,6 @@
         <main>
             <basket @closeBasket="btnBasket" @delete="deleteBasketItem(good)" :basketGoods="basketGoods" :buyGood="buyGood" v-show="isVisibleCart"></basket>   
             <goods-list :goods="filteredGoods" @buyItem="buyGood"></goods-list>
-
-            <!-- <div class="modal" v-if="isVisibleCart">
-                <div class="modalContainer">
-                    <button class="closeBasket" @click="btnBasket">&times;</button>
-                    <h1 class="titleBasket">Корзина</h1>
-                    <div class="basketList" v-for="good in basketGoods" v-if="basketGoods.length !==0">
-                        <h3>{{ good.product_name }}</h3>
-                        <p> {{ good.price }} </p>
-                        <button @click="deleteBasketItem(good)">Удалить</button>
-                    </div>
-                    <div class="emptyBasket" v-else>Корзина пуста</div>
-                </div>
-            </div> -->
-    
-            <!-- <div class="goodsList">
-                <div class="goodsItem" v-for="good in filteredGoods" v-if="filteredGoods.length !== 0">
-                    <h3>{{ good.product_name }}</h3>
-                    <p>{{ good.price }}</p>
-                    <button class="buy" @click="buyGood(good.product_name, good.price)">Купить</button>
-                </div>
-                <div class="emptyGoods" v-else>Нет данных</div>
-            </div> -->
         </main>
     </div>
     
