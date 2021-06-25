@@ -1,0 +1,1 @@
+const dateFns = require('date-fns'); // подключение зависимостей из node_modules

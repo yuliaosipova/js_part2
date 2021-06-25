@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Store</title>
+    <link rel="stylesheet" href="./front/style.css">
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <div class="logo">E-shop</div>
+            <div class="cart">
+                <form action="#" class="search-form">
+                    <input type="text" class="search-field" v-model="searchLine">
+                    <button class="btn-search" type="submit" @click="filter(searchLine)">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+                <button class="btn-cart" type="button" @click="getBasket()">Корзина</button>
+                <div class="cart-block" v-if="isVisibleCart">
+                    <template v-if="cartGoods.length">
+                        <div class="product-item" v-for="(prod, index) in cartGoods">
+                            <div class="desc">
+                                <h3>{{prod.product_name}}</h3>
+                                <p>{{prod.price}}</p>
+                                <button class="buy-btn" :data-id=prod.id_product @click="removeFromCart(index)">Удалить</button>
+                            </div>
+                        </div>    
+                    </template>
+                    <span v-else>Корзина пуста</span>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="Goods" v-if=filteredGoods.length>
+                <div class="product-item" v-for="prod in filteredGoods">
+                    <div class="desc">
+                        <h3>{{prod.product_name}}</h3>
+                        <p>{{prod.price}}</p>
+                        <button class="buy-btn" :data-id=prod.id_product @click.preventDefault="addToCart(prod)">Купить</button>
+                    </div>
+                </div>
+            </div>
+            <p v-else style="text-align:center">Нет даных</p>
+        </main>
+    </div>
+    <script src="https:cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script src="./front/JSproduct.js"></script>
+    <script defer src="https:use.fontawesome.com/releases/v5.7.2/js/all.js"
+        integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous">
+    </script>
+
+</body>
+
+</html>
